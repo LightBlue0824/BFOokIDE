@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainUIController">
+   <center>
+      <TabPane fx:id="tabPane" />
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" onMenuValidation="#repareFileMenu" text="File">
+            <items>
+                  <Menu mnemonicParsing="false" text="New">
+                    <items>
+                      <MenuItem fx:id="newBF" mnemonicParsing="false" onAction="#newBF" text="Brainfuck" />
+                        <MenuItem fx:id="newOok" mnemonicParsing="false" onAction="#newOok" text="Ook!" />
+                    </items>
+                  </Menu>
+                  <MenuItem fx:id="open" mnemonicParsing="false" onAction="#openFile" text="Open" />
+                  <MenuItem fx:id="save" disable="true" mnemonicParsing="false" onAction="#saveFile" text="Save" />
+                  <MenuItem fx:id="saveAs" disable="true" mnemonicParsing="false" onAction="#saveFileAs" text="Save As..." />
+                  <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exit" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" onMenuValidation="#repareEditMenu" text="Edit">
+            <items>
+              <MenuItem fx:id="undo" disable="true" mnemonicParsing="false" onAction="#undo" text="Undo" />
+                  <MenuItem fx:id="redo" disable="true" mnemonicParsing="false" onAction="#redo" text="Redo" />
+                  <MenuItem fx:id="delete" disable="true" mnemonicParsing="false" onAction="#delete" text="Delete" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" onMenuValidation="#loadSetMenu" text="Set">
+              <items>
+                <MenuItem fx:id="memorySizeItem" mnemonicParsing="false" onAction="#setMemorySize" text="Memory Size" />
+                  <CheckMenuItem fx:id="isInfinite" mnemonicParsing="false" onAction="#setInfiniteMemory" text="Infinite Memory" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" onMenuValidation="#checkRunnable" text="Run">
+               <items>
+                  <MenuItem fx:id="execute" disable="true" mnemonicParsing="false" onAction="#execute" text="Execute" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="User">
+              <items>
+                <MenuItem fx:id="changeUser" mnemonicParsing="false" onAction="#changeUser" text="Change user" />
+                  <MenuItem fx:id="deleteUser" mnemonicParsing="false" onAction="#deleteUser" text="Delete user" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="about" mnemonicParsing="false" onAction="#about" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <bottom>
+      <BorderPane prefHeight="190.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <center>
+            <GridPane prefHeight="120.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TitledPane prefHeight="200.0" prefWidth="200.0" text="Console">
+                     <content>
+                        <TextArea fx:id="console" editable="false" onMouseEntered="#checkConsoleEditable" prefHeight="95.0" prefWidth="298.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextArea>
+                     </content>
+                     <graphic>
+                        <Button graphicTextGap="0.0" mnemonicParsing="false" onAction="#clearConsole" text="O">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </TitledPane>
+                  <TitledPane prefHeight="200.0" prefWidth="200.0" text="Result" GridPane.columnIndex="1">
+                     <content>
+                        <TextArea fx:id="result" editable="false" prefHeight="107.0" prefWidth="298.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextArea>
+                     </content>
+                     <graphic>
+                        <Button graphicTextGap="0.0" mnemonicParsing="false" onAction="#clearResult" text="O">
+                           <font>
+                              <Font size="8.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </TitledPane>
+               </children>
+            </GridPane>
+         </center>
+         <bottom>
+            <Label fx:id="stateLabel" prefHeight="15.0" prefWidth="600.0" text="State: Linked" BorderPane.alignment="CENTER_LEFT">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+         </bottom>
+      </BorderPane>
+   </bottom>
+</BorderPane>

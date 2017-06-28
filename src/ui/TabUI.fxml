@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Tab fx:id="tab" onCloseRequest="#checkSaved" onSelectionChanged="#changeCurrentTab" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.TabUIController">
+   <content>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <TextArea fx:id="codeArea" prefHeight="356.0" prefWidth="600.0">
+               <font>
+                  <Font size="17.0" />
+               </font></TextArea>
+            <TitledPane prefHeight="372.0" prefWidth="200.0" text="Version ↓">
+               <content>
+                  <ListView fx:id="versionList" fixedCellSize="33.0" onMousePressed="#chooseVersion" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </TitledPane>
+         </children>
+      </HBox>
+   </content>
+</Tab>
