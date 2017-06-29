@@ -21,6 +21,8 @@ public class RenameUIController {
 			if(success){
 				MainUI.setStateLabelText("State: Rename succeed");
 				MainUIController.closeTempStage();
+				MainUI.setFilename(newFileName.getText()+MainUI.getCodeType());
+				MainUI.getCurrentTab().setText(newFileName.getText()+MainUI.getCodeType());
 			}
 			else{
 				MainUI.setStateLabelText("State: Rename failed");
