@@ -30,6 +30,8 @@ public class MainUIController {
 	private MenuItem save;
 	@FXML
 	private MenuItem saveAs;
+	@FXML
+	private MenuItem rename;
 	
 	@FXML
 	private MenuItem undo;
@@ -80,6 +82,13 @@ public class MainUIController {
 			}
 			
 			saveAs.setDisable(false);
+		}
+		
+		if(MainUI.getFilename() != null){			//是已存在的文件才能重命名
+			rename.setDisable(false);
+		}
+		else{
+			rename.setDisable(true);
 		}
 	}
 	
@@ -216,6 +225,23 @@ public class MainUIController {
 		
 		try {
 			GridPane savePane = FXMLLoader.load(MainUI.class.getResource("SaveUI.fxml"));
+			Scene saveScene = new Scene(savePane, 300, 150);
+			
+			tempStage.setScene(saveScene);
+			tempStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	private void rename(){
+		tempStage.setTitle("Rename File");
+		
+		try {
+			GridPane savePane = FXMLLoader.load(MainUI.class.getResource("RenameUI.fxml"));
 			Scene saveScene = new Scene(savePane, 300, 150);
 			
 			tempStage.setScene(saveScene);

@@ -13,4 +13,6 @@ public interface IOService extends Remote{
 	public String[] readFileList(String userId)throws RemoteException;
 	
 	public boolean deleteFile(String userId, String fileName)throws RemoteException;
+	
+	public boolean renameFile(String userId, String oldFileName, String newFileName)throws RemoteException;
 }
