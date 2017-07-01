@@ -135,15 +135,23 @@ public class UndoRedoManager {
 					tempUndo = new Undo(codeArea.getSelection().getStart(), codeArea.getSelection().getEnd(), codeArea.getText().substring(codeArea.getSelection().getStart(), codeArea.getSelection().getEnd()), Type.DELETE, true);
 					addUndo(tempUndo);
 					codeArea.deleteText(codeArea.getSelection());		//先删除选中部分
-				}
-				
-				isOther = true;
+					
+					isOther = true;
 
-				TextArea tempArea = new TextArea();			//暂时的文本框，用来获取要粘贴的文本
-				tempArea.paste();
-				tempUndo = new Undo(codeArea.getCaretPosition(), codeArea.getCaretPosition()+tempArea.getText().length(), tempArea.getText(), Type.TYPING, true);
-				addUndo(tempUndo);
-				
+					TextArea tempArea = new TextArea();			//暂时的文本框，用来获取要粘贴的文本
+					tempArea.paste();
+					tempUndo = new Undo(codeArea.getCaretPosition(), codeArea.getCaretPosition()+tempArea.getText().length(), tempArea.getText(), Type.TYPING, true);
+					addUndo(tempUndo);
+				}
+				else{			//没有选中文字，普通的粘贴
+					isOther = true;
+
+					TextArea tempArea = new TextArea();			//暂时的文本框，用来获取要粘贴的文本
+					tempArea.paste();
+					tempUndo = new Undo(codeArea.getCaretPosition(), codeArea.getCaretPosition()+tempArea.getText().length(), tempArea.getText(), Type.TYPING, false);
+					addUndo(tempUndo);
+				}
+								
 				//处理结束
 				tempUndo = null;
 			}

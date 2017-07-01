@@ -8,7 +8,6 @@ import rmi.RemoteHelper;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
